@@ -1,0 +1,24 @@
+<h2>Danh sách Product</h2>
+<table class="product-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Giá</th>
+      <th>Hình Ảnh</th>
+      <th>Hành Động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Product of Product">
+      <td>{{ Product.id }}</td>
+      <td>{{ Product.ten_san_pham }}</td>
+      <td>{{ Product.gia | currency:'VND' }}</td>
+      <td><img [src]="Product.hinh_anh" alt="{{ Product.ten_san_pham }}" width="80" /></td>
+      <td>
+        <button class="btn btn-delete">Xóa</button>
+        <button class="btn btn-edit">Sửa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

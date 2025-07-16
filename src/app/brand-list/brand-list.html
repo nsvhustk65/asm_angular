@@ -1,0 +1,23 @@
+<h2>Danh sách Brand</h2>
+<table class="product-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Mô tả</th>
+      <th>Hành Động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Brand of Brand">
+      <td>{{ Brand.id }}</td>
+      <td>{{ Brand.ten_thuong_hieu}}</td>
+      <td>{{ Brand.mo_ta }}</td>
+      <td>
+        <button class="btn btn-delete">Xóa</button>
+        <button class="btn btn-edit">Sửa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

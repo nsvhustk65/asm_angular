@@ -1,0 +1,15 @@
+<h2>Danh sách Category</h2>
+<table class="category-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories">
+      <td>{{ category.id }}</td>
+      <td>{{ category.ten_danh_muc }}</td>
+    </tr>
+  </tbody>
+</table>

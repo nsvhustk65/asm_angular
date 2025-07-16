@@ -1,0 +1,24 @@
+<h2>Danh sách Product</h2>
+<table class="product-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Email</th>
+      <th>Số điện thoại</th>
+      <th>Hành Động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Users of Users">
+      <td>{{ Users.id }}</td>
+      <td>{{ Users.ten_nguoi_dung}}</td>
+      <td>{{ Users.email }}</td>
+      <td>{{ Users.so_dien_thoai }}</td>
+      <td>
+        <button class="btn btn-delete">Xóa</button>
+        <button class="btn btn-edit">Sửa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
