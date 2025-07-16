@@ -1,0 +1,58 @@
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-table th {
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.product-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+.product-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.product-table tbody tr:hover {
+  background-color: #eef6ff;
+  transition: background-color 0.3s ease;
+}
+
+.product-table img {
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Nút hành động */
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-edit {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
