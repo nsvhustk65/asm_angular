@@ -1,8 +1,9 @@
+<div class="flex min-h-screen">
+  <!-- Sidebar -->
+  <app-side-bar class="w-64 bg-gray-800 text-white p-4 shadow-lg"></app-side-bar>
 
-<main class="main">
-<app-category-list></app-category-list>
-<app-product-list></app-product-list>
-<app-user-list></app-user-list>
-<app-brand-list></app-brand-list>
-</main>
-
+  <!-- Main Content -->
+  <div class="flex-grow p-6 bg-gray-100">
+    <router-outlet></router-outlet>
+  </div>
+</div>

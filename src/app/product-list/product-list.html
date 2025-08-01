@@ -1,24 +1,52 @@
-<h2>Danh sách Product</h2>
-<table class="product-table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Tên</th>
-      <th>Giá</th>
-      <th>Hình Ảnh</th>
-      <th>Hành Động</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let Product of Product">
-      <td>{{ Product.id }}</td>
-      <td>{{ Product.ten_san_pham }}</td>
-      <td>{{ Product.gia | currency:'VND' }}</td>
-      <td><img [src]="Product.hinh_anh" alt="{{ Product.ten_san_pham }}" width="80" /></td>
-      <td>
-        <button class="btn btn-delete">Xóa</button>
-        <button class="btn btn-edit">Sửa</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="flex justify-between items-center mb-8">
+  <h2 class="text-3xl font-extrabold text-gray-800 tracking-tight">
+    🛒 Danh sách sản phẩm
+  </h2>
+  <button (click)="them()"
+    class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95">
+    ➕ <span>Thêm mới</span>
+  </button>
+</div>
+<div class="overflow-x-auto rounded-xl shadow-2xl border border-gray-200 backdrop-blur-sm bg-white/80">
+  <table class="min-w-full divide-y divide-gray-200 text-sm">
+    <thead
+      class="bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 sticky top-0 z-10 text-xs text-gray-600 uppercase tracking-wider shadow-sm">
+      <tr>
+        <th class="px-6 py-4 text-left">ID</th>
+        <th class="px-6 py-4 text-left">Tên</th>
+        <th class="px-6 py-4 text-left">Giá</th>
+        <th class="px-6 py-4 text-left">Danh Mục</th>
+        <th class="px-6 py-4 text-left">Hình Ảnh</th>
+        <th class="px-6 py-4 text-center">Hành Động</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-100 text-gray-700">
+      <tr *ngFor="let product of products"
+        class="hover:bg-gray-50 transition-all duration-200 ease-in-out group cursor-pointer"
+        [routerLink]="['/product/detail', product.id]">
+        <td class="px-6 py-4 font-medium text-gray-900">{{ product.id }}</td>
+        <td class="px-6 py-4 font-medium text-gray-900">{{ product.name }}</td>
+        <td class="px-6 py-4 text-green-600 font-bold">
+          {{ product.price | currency:'VND' }}
+        </td>
+        <td class="px-6 py-4">{{ product.category }}</td>
+        <td class="px-6 py-4">
+          <img [src]="product.img" alt="{{ product.name }}"
+            class="w-20 h-20 object-cover rounded-xl border border-gray-300 shadow group-hover:scale-105 transition-transform duration-200" />
+        </td>
+        <td class="px-6 py-4 text-center">
+          <div class="flex justify-center items-center gap-3">
+            <button (click)="xoaSanPham(product.id); $event.stopPropagation()"
+              class="p-2 rounded-full bg-red-500 hover:bg-red-600 text-white shadow-lg transition hover:scale-110">
+              🗑️
+            </button>
+            <button
+              class="p-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white shadow-lg transition hover:scale-110">
+              ✏️
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

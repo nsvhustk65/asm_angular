@@ -1,0 +1,22 @@
+.nav-link {
+  transition: all 0.3s ease;
+  border-radius: 0.375rem; /* rounded-md */
+  padding: 0.5rem 0.75rem; /* px-3 py-2 */
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: translateX(4px); /* dịch nhẹ sang phải */
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+  color: #38bdf8; /* text-sky-400 */
+}
+a.active {
+  background-color: rgba(59, 130, 246, 0.3); /* Tailwind: bg-blue-500/30 */
+  font-weight: 600;
+  color: #38bdf8; /* text-sky-400 */
+}
