@@ -1,0 +1,70 @@
+<div class="p-6 bg-gray-100 min-h-screen">
+  <h1 class="text-3xl font-bold mb-6 text-gray-800">Trang quản trị</h1>
+
+  <!-- Thống kê nhanh -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+    <div class="bg-white p-4 rounded shadow hover:shadow-md transition">
+      <h2 class="text-sm text-gray-500">Tổng sản phẩm</h2>
+      <p class="text-2xl font-bold text-blue-600 mt-1">128</p>
+    </div>
+
+    <div class="bg-white p-4 rounded shadow hover:shadow-md transition">
+      <h2 class="text-sm text-gray-500">Đơn hàng</h2>
+      <p class="text-2xl font-bold text-green-600 mt-1">76</p>
+    </div>
+
+    <div class="bg-white p-4 rounded shadow hover:shadow-md transition">
+      <h2 class="text-sm text-gray-500">Người dùng</h2>
+      <p class="text-2xl font-bold text-yellow-600 mt-1">32</p>
+    </div>
+
+    <div class="bg-white p-4 rounded shadow hover:shadow-md transition">
+      <h2 class="text-sm text-gray-500">Doanh thu</h2>
+      <p class="text-2xl font-bold text-red-600 mt-1">42.300.000đ</p>
+    </div>
+  </div>
+
+  <!-- Biểu đồ hoặc bảng -->
+  <div class="bg-white rounded shadow p-6">
+    <h2 class="text-lg font-bold mb-4">Thống kê doanh thu theo tháng</h2>
+    <div class="h-64 bg-gray-200 rounded flex items-center justify-center text-gray-500 italic">
+      Biểu đồ doanh thu sẽ được hiển thị tại đây (dùng Chart.js hoặc ApexCharts)
+    </div>
+  </div>
+
+  <!-- Bảng đơn hàng gần đây -->
+  <div class="bg-white rounded shadow p-6 mt-8">
+    <h2 class="text-lg font-bold mb-4">Đơn hàng mới</h2>
+    <table class="w-full table-auto text-left border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-600 text-sm uppercase">
+          <th class="px-4 py-2">Mã đơn</th>
+          <th class="px-4 py-2">Khách hàng</th>
+          <th class="px-4 py-2">Sản phẩm</th>
+          <th class="px-4 py-2">Tổng tiền</th>
+          <th class="px-4 py-2">Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders" class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">#{{ order.id }}</td>
+          <td class="px-4 py-2">{{ order.customer }}</td>
+          <td class="px-4 py-2">{{ order.product }}</td>
+          <td class="px-4 py-2 text-red-500 font-semibold">{{ order.total | currency:'VND' }}</td>
+          <td class="px-4 py-2">
+            <span
+              [ngClass]="{
+                'text-green-600': order.status === 'Hoàn thành',
+                'text-yellow-600': order.status === 'Đang xử lý',
+                'text-red-600': order.status === 'Đã hủy'
+              }"
+              class="font-semibold"
+            >
+              {{ order.status }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

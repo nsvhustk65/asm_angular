@@ -1,0 +1,11 @@
+{
+  "products": [
+    { "id": 1, "name": "Laptop", "price": 1000, "category": "Áo", "img": "https://khoitoanstudio.com/wp-content/uploads/2024/11/cach-chup-anh-quan-ao-trai-san-hut-hang-khi-ban-online.webp" },
+    { "id": 2, "name": "Phone", "price": 500, "category": "Giày", "img": "https://khoitoanstudio.com/wp-content/uploads/2024/11/vn-11134207-7r98o-lw5h1rj2djo9cd.webp"}
+  ],
+
+  "categories": [
+    { "id": 1, "name": "Áo", "description": "Áo thời trang"},
+    { "id": 2, "name": "Giày", "description": "Giày thể thao"}
+  ]
+}

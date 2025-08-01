@@ -1,19 +1,45 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { Product, ProductService } from '../services/product';
 
 @Component({
   selector: 'app-product-list',
-  imports: [FormsModule, CommonModule],
+  standalone: true,
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './product-list.html',
-  styleUrl: './product-list.css'
+  styleUrls: ['./product-list.css']
 })
-export class ProductList {
-  Product = [
-    { id: 1, ten_san_pham: "Giày thể thao Nike", gia: 1500000, hinh_anh: "https://khoitoanstudio.com/wp-content/uploads/2024/11/cach-chup-anh-quan-ao-trai-san-hut-hang-khi-ban-online.webp"},
-    { id: 2, ten_san_pham: "Giày tây Clarks", gia: 2000000, hinh_anh: "https://khoitoanstudio.com/wp-content/uploads/2024/11/vn-11134207-7r98o-lw5h1rj2djo9cd.webp"},
-    { id: 3, ten_san_pham: "Sandal nữ xinh xắn", gia: 800000, hinh_anh: "https://khoitoanstudio.com/wp-content/uploads/2024/11/sg-11134201-7repq-m1y6jb8pxbsw09.webp" },
-    { id: 4, ten_san_pham: "Giày boot nam cao cấp", gia: 2500000, hinh_anh: "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfj6b57l35ok92" },
-    { id: 5, ten_san_pham: "Phụ kiện giày da", gia: 500000, hinh_anh: "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfj6b57l35ok92" }
-    ]
+export class ProductList implements OnInit {
+
+  products: Product[] = [];
+
+  constructor(private router: Router, private productService: ProductService) {}
+
+  ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  xoaSanPham(id: number): void {
+    const xacNhan = window.confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');
+    if (xacNhan) {
+      this.products = this.products.filter(sp => sp.id !== id);
+    }
+  }
+
+  them(): void {
+    this.router.navigate(['/products/create']);
+  }
+
+  loadProducts(): void {
+    this.productService.getProducts().subscribe({
+      next: (data: Product[]) => {
+        this.products = data;
+      },
+      error: (err) => {
+        console.error('Lỗi khi tải sản phẩm:', err);
+      }
+    });
+  }
 }

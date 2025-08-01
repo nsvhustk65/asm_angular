@@ -1,0 +1,73 @@
+<div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-lg mt-10 border border-gray-200">
+  <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">➕ Thêm mới sản phẩm</h2>
+
+  <form (ngSubmit)="onSubmit()" #form="ngForm" class="space-y-5">
+    <!-- Tên sản phẩm -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Tên sản phẩm</label>
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="newProduct.name"
+        required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+      />
+    </div>
+
+    <!-- Giá -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Giá (VNĐ)</label>
+      <input
+        type="number"
+        name="price"
+        [(ngModel)]="newProduct.price"
+        required
+        min="0"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+      />
+    </div>
+
+    <!-- Link hình ảnh -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Link hình ảnh</label>
+      <input
+        type="text"
+        name="img"
+        [(ngModel)]="newProduct.img"
+        required
+        placeholder="https://..."
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+      />
+    </div>
+
+    <!-- Preview ảnh -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Xem trước hình ảnh</label>
+      <img
+        *ngIf="newProduct.img"
+        [src]="newProduct.img"
+        alt="Preview"
+        class="w-32 h-auto border rounded-lg shadow-sm"
+      />
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex justify-end gap-3 pt-2">
+      <button
+        type="submit"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2 rounded-lg shadow transition disabled:opacity-50"
+        [disabled]="form.invalid"
+      >
+        💾 Lưu sản phẩm
+      </button>
+
+      <button
+        type="button"
+        (click)="huy()"
+        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium px-5 py-2 rounded-lg shadow"
+      >
+        ❌ Hủy
+      </button>
+    </div>
+  </form>
+</div>
